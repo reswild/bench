@@ -8,6 +8,8 @@
       - dnsmasq
       - fontconfig
       - git                     # Version control
+      - gpg
+      - gpg-agent
       - htop                    # Server stats
       - libcrypto++-dev
       - libfreetype6-dev
@@ -22,6 +24,7 @@
       - postfix                 # Mail Server
       - python3-dev             # Installing python developer suite
       - python-tk
+      - python3-venv
       - screen                  # To aid ssh sessions with connectivity problems
       - vim                     # Is that supposed to be a question!?
       - xfonts-75dpi

@@ -82,7 +82,7 @@ def check_distribution_compatibility():
 	supported_dists = {
 		'macos': [10.9, 10.10, 10.11, 10.12],
 		'ubuntu': [14, 15, 16, 18, 19, 20],
-		'debian': [8, 9, 10],
+		'debian': [8, 9, 10, 11],
 		'centos': [7]
 	}
 
@@ -119,7 +119,7 @@ def get_distribution_info():
 	# return distribution name and major version
 	if platform.system() == "Linux":
 		if distro_required:
-			current_dist = distro.linux_distribution(full_distribution_name=True)
+			current_dist = distro.linux_distribution(full_distribution_name=False)
 		else:
 			current_dist = platform.dist()
 
@@ -176,7 +176,7 @@ def install_prerequisites():
 		'python3': "sudo -H python3 -m pip install --upgrade pip setuptools-rust"
 	})
 	success = run_os_command({
-		'python3': "sudo -H python3 -m pip install --upgrade setuptools wheel cryptography ansible~=2.8.15"
+		'python3': "sudo -H python3 -m pip install --upgrade setuptools==59.6.0 wheel cryptography ansible~=2.8.15"
 	})
 
 	if not (success or shutil.which('ansible')):
@@ -450,7 +450,7 @@ def parse_commandline_args():
 	parser.add_argument('--overwrite', dest='overwrite', action='store_true', default=False, help='Whether to overwrite an existing bench')
 	# set passwords
 	parser.add_argument('--mysql-root-password', dest='mysql_root_password', help='Set mysql root password')
-	parser.add_argument('--mariadb-version', dest='mariadb_version', default='10.4', help='Specify mariadb version')
+	parser.add_argument('--mariadb-version', dest='mariadb_version', default='10.5', help='Specify mariadb version')
 	parser.add_argument('--admin-password', dest='admin_password', help='Set admin password')
 	parser.add_argument('--bench-name', dest='bench_name', help='Create bench with specified name. Default name is frappe-bench')
 	# Python interpreter to be used
